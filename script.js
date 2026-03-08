@@ -1,23 +1,16 @@
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const music = document.getElementById('bg-music');
+document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+        threshold: 0.2
+    };
 
-function nextSlide() {
-    // Start music on first interaction
-    if (currentSlide === 0) {
-        music.play().catch(e => console.log("Music play blocked until user clicks"));
-    }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, observerOptions);
 
-    slides[currentSlide].classList.remove('active');
-    currentSlide++;
-
-    if (currentSlide < slides.length) {
-        slides[currentSlide].classList.add('active');
-    }
-}
-
-function resetSlides() {
-    slides[currentSlide - 1].classList.remove('active');
-    currentSlide = 0;
-    slides[0].classList.add('active');
-}
+    const containers = document.querySelectorAll('.container');
+    containers.forEach(el => observer.observe(el));
+});
