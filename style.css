@@ -1,54 +1,86 @@
-body {
+/* General Reset */
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fce4ec; /* Soft Pink */
-    color: #880e4f;
-    overflow: hidden;
+    padding: 0;
+}
+
+body {
+    background-color: #fff5f8;
+    font-family: 'Poppins', sans-serif;
+    color: #444;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #ff80ab, #f06292);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+/* Timeline Logic */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* Vertical Center Line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #f06292;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
 }
 
 .container {
+    padding: 15px 40px;
     position: relative;
-    height: 100vh;
-    width: 100vw;
-}
-
-.slide {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    width: 50%;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-    visibility: hidden;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
 
-.slide.active {
+/* The Animation Trigger Class */
+.container.show {
     opacity: 1;
-    visibility: visible;
+    transform: translateY(0);
 }
 
-.anniversary-img {
-    width: 80%;
-    max-width: 400px;
+.left { left: 0; }
+.right { left: 50%; }
+
+/* Content Box */
+.content {
+    background: white;
+    padding: 10px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-.btn {
-    background: #ff4081;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1.2rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.3s;
+.content img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
 }
 
-.btn:hover {
-    transform: scale(1.1);
+.text-box { padding: 15px; text-align: center; }
+.text-box span { font-weight: bold; color: #f06292; font-size: 0.9rem; }
+
+/* Mobile View */
+@media (max-width: 600px) {
+    .timeline::after { left: 31px; }
+    .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .right { left: 0; }
 }
