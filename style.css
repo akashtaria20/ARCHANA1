@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fce4ec; /* Soft Pink */
+    color: #880e4f;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    visibility: hidden;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.anniversary-img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border: 5px solid white;
+}
+
+.btn {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
